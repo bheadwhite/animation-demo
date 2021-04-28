@@ -30,30 +30,28 @@ const useStyles = makeStyles({
   },
 });
 
-export default withStyles(appStyles)(
-  class App extends React.Component {
-    state = {
-      isOpen: false,
-    };
+class App extends React.Component {
+  state = {
+    isOpen: false,
+  };
 
-    handleDrawer = () => {
-      this.setState({ isOpen: !this.state.isOpen });
-    };
+  handleDrawer = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
 
-    render() {
-      const { classes } = this.props;
-      return (
-        <div className={classes.app}>
-          <Header isOpen={this.state.isOpen} handleDrawer={this.handleDrawer} />
-        </div>
-      );
-    }
-  },
-);
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.app}>
+        <Header isOpen={this.state.isOpen} handleDrawer={this.handleDrawer} />
+      </div>
+    );
+  }
+}
 
 //props
 // isopen
-// handler
+// drawerhandler: open /close the drawer
 const Header = (props) => {
   const classes = useStyles();
   return (
@@ -68,6 +66,8 @@ const Header = (props) => {
   );
 };
 
+//props
+//isOpen : is the drawer open or not
 const Drawer = (props) => {
   const classes = useStyles();
   return (
@@ -78,3 +78,5 @@ const Drawer = (props) => {
     </div>
   );
 };
+
+export default withStyles(appStyles)(App);
